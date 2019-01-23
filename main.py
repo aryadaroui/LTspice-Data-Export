@@ -12,68 +12,58 @@ def ReplaceSubstring(start, end, original, replacement):
 	return original[:start] + replacement + original[end + 1:]
 
 def Update(text):
-	os.system('clear')
+	Clear()
 	print(text)
 
-def ClearConsole():
+def Clear():
 	os.system('clear')
 
 def Main():
 	print(INTRO)
 
 	# command = input("file: ")
-	command = "/Users/aryadaroui/Desktop/High\ pass\ amp.txt" # FOR DEBUG
+	command = r"/Users/aryadaroui/Desktop/High\ pass\ amp.txt" # FOR DEBUG
 
-	ClearConsole()
+	Clear()
 	if command == "h":
 		print(HELP_SCREEN)
 	else:
-		inFilePath = command.rstrip()	#removes whitespace
+		inFilePath = command.rstrip()	# removes whitespace
 		del command
-		inFilePath = inFilePath.rstrip('/')	#removes extra / at end
-		inFilePath = inFilePath.replace('\ ', ' ')	#removes extra escape character prefix. could probably also use raw string
+		inFilePath = inFilePath.rstrip('/')	# removes extra / at end
+		inFilePath = inFilePath.replace(r'\ ', ' ')	# removes extra escape character prefix
 	
-	ClearConsole();
-	inFile = open(inFilePath, encoding = 'cp1252')
+	Clear()
+	inFile = open(inFilePath, encoding = 'cp1252') # 8-bit encoding
 	text = inFile.read()
 	text = text.replace('(', '')
-	
 	text = text.replace(')', '')
 	text = text.replace(',', '\t')
 
 	indexFound = text.find('\n')
+	# TO DO make robust function to handle datatype, i.e. voltage current
 	if text.find('dB') > 0:
 		text = text.replace('dB', '')
 		text = text.replace('°', '')
 		text = ReplaceSubstring(0, indexFound - 1, text, "Frequency (Hz)\tGain (dB)\tPhase (°)")
-		# text = "Frequency (Hz)\tGain (dB)\tPhase (°)" + text[indexFound:]
 	else:
 		text = ReplaceSubstring(0, indexFound - 1, text, "Frequency (Hz)\tReal\tImaginary")
-		# text = "Frequency (Hz)\tReal\tImaginary"
 	
-	while text.find('e+') > 0:
+	while text.find('e+') > 0 or text.find('e-') > 0:
 		indexFound = text.find('e+')
+		if indexFound < 0:
+			indexFound = text.find('e-')
 		endIndex = indexFound + 4
 		startIndex = indexFound - 16
 		replacement = text[startIndex : endIndex + 1]
-		pad = str(15 - len(str(int(float(replacement)))))
-		buff = "{0:." + pad + "f}"
-		replacement = buff.format(float(replacement))
-		text = ReplaceSubstring(startIndex, endIndex, text, replacement)
-		Update(text)
+		pad = str(15 - len(str(int(float(replacement))))) # converts sci notation to float, which removes trailing
+		style = "{0:." + pad + "f}"
+		replacement = style.format(float(replacement))
 
-	while text.find('e-') > 0:
-		indexFound = text.find('e-')
-		endIndex = indexFound + 4
-		startIndex = indexFound - 16
-		pad = str(15 - len(str(int(float(text[startIndex:endIndex+1])))))
-		buff = "{0:." + pad + "f}"
-		replacement = buff.format(float(text[startIndex:endIndex+1]))
 		text = ReplaceSubstring(startIndex, endIndex, text, replacement)
 		Update(text)
 
 	outFilePath = inFilePath.replace('txt', 'tsv')
-
 	outFile = open(outFilePath, "w")
 	outFile.write(text)
 
