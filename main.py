@@ -53,7 +53,6 @@ def Main():
 			inFilePath = command.rstrip()	# removes whitespace
 			inFilePath = inFilePath.rstrip('/')	# removes extra / at end
 			inFilePath = inFilePath.replace(r'\ ', ' ')	# removes extra escape character prefix
-
 	del command
 
 	
