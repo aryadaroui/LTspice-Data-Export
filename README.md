@@ -22,7 +22,11 @@ Frequency (Hz)	Gain (dB)	Phase (°)
 
 ## How to use
 
-**Just run the script in your terminal and drag and drop the LTspice data `.txt`. The `.tsv`	 file will be created at the original directory.** You will need Python 3 or above and a GNU/Linux or macOS computer. If you're using windows, I think it's only the `    os.system('clear')` commands that are incompatible. You can just copy paste the rest as you need.
+**Just run the script in your terminal and drag and drop the LTspice data `.txt`. The `.tsv`	 file will be created at the original directory.** 
+
+Optionally, you can output as a `.csv`  and/or scientific notation with the ` -c` and `-s` flags switches respectively.
+
+You will need Python 3 or above and a GNU/Linux or macOS computer. If you're using windows, I think it's only the `    os.system('clear')` commands that are incompatible. You can just copy paste the rest as you need.
 
 Now you can properly analyze the waveform or just make pretty charts for your documents.
 
@@ -30,6 +34,6 @@ Now you can properly analyze the waveform or just make pretty charts for your do
 
 ### Next features
 
--   [ ] Add options for exporting as CSV and/or using scientific notation.
+-   [x] Add options for exporting as CSV and/or using scientific notation.
 -   [ ] Handle other unit types, not just AC voltage and frequency
 
