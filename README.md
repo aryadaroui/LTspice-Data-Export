@@ -1,4 +1,19 @@
-## Export LTspice AC analysis data as  `.tsv` with Python in *NIX systems
+# LTspice data export
+
+> [!NOTE]
+> This is an old repo from when I was just learning Python.
+> You may still find it helpful, but I don't know if it works anymore
+> If it doesn't, the `main.py` is pretty short, you can extract the useful bits from it
+
+All you need is to run `main.py`, and it'll prompt you for your data `.txt` file, and export a `.tsv`.
+
+Optionally, you can output as a `.csv`  and/or scientific notation with the ` -c` and `-s` flags switches respectively.
+
+## Platform note
+
+You will need Python 3 or above and a GNU/Linux or macOS computer. If you're using windows, I think it's only the `os.system('clear')` commands that are incompatible. You can just copy paste the rest as you need.
+
+## Discussion
 
 For freeware, LTspice is a great circuit analysis tool. However, its data export features are lacking. You can export the waveform data as a text by right-clicking the waveform as shown below.
 
@@ -12,7 +27,11 @@ Freq.	V(n002)
 1.25892541179417e+000	(-5.19879374626541e+001dB,8.99855155366172e+001�)
 ```
 
- You can write a script to enter the data in MATLAB,  Excel, etc., <u>but I've already done it for you</u> and saved you some time
+ You can write a script to enter the data in MATLAB,  Excel, etc., *but I've already done it for you* and saved you some time
+
+```bash
+python data.txt
+```
 
 ```
 Frequency (Hz)	Gain (dB)	Phase (°)
@@ -20,14 +39,9 @@ Frequency (Hz)	Gain (dB)	Phase (°)
 1.25892541179417	-51.9879374626541	89.9855155366172
 ```
 
-## How to use
-
-**Just run the script in your terminal and drag and drop the LTspice data `.txt`. The `.tsv`	 file will be created at the original directory.** 
-
-Optionally, you can output as a `.csv`  and/or scientific notation with the ` -c` and `-s` flags switches respectively.
-
-You will need Python 3 or above and a GNU/Linux or macOS computer. If you're using windows, I think it's only the `    os.system('clear')` commands that are incompatible. You can just copy paste the rest as you need.
-
 Now you can properly analyze the waveform or just make pretty charts for your documents.
 
 ![](https://raw.githubusercontent.com/aryadee/LTspice-Data-Export/master/Images/Report.png)
+
+
+
