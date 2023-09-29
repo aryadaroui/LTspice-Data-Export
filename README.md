@@ -2,7 +2,9 @@
 
 > [!NOTE]
 > This is an old repo from when I was just learning Python.
-> You may still find it helpful, but I don't know if it works anymore
+> 
+> You may still find it helpful, but I don't know if it works anymore.
+> 
 > If it doesn't, the `main.py` is pretty short, you can extract the useful bits from it
 
 All you need is to run `main.py`, and it'll prompt you for your data `.txt` file, and export a `.tsv`.
@@ -27,13 +29,20 @@ Freq.	V(n002)
 1.25892541179417e+000	(-5.19879374626541e+001dB,8.99855155366172e+001�)
 ```
 
- You can write a script to enter the data in MATLAB,  Excel, etc., *but I've already done it for you* and saved you some time
+This script converts that to a `.tsv` or `.csv`.
 
 ```bash
-python data.txt
+python main.py
 ```
 
 ```
+LTspice Data Exporter by Arya Daroui
+Drag and drop LTspice data .txt file to export to .tsv or just enter 'h' for help
+file: data.txt
+```
+
+```
+# data.tsv
 Frequency (Hz)	Gain (dB)	Phase (°)
 1.00000000000000	-53.9879373612431	89.9884945816811
 1.25892541179417	-51.9879374626541	89.9855155366172
