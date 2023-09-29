@@ -31,11 +31,3 @@ You will need Python 3 or above and a GNU/Linux or macOS computer. If you're usi
 Now you can properly analyze the waveform or just make pretty charts for your documents.
 
 ![](https://raw.githubusercontent.com/aryadee/LTspice-Data-Export/master/Images/Report.png)
-
-### Next features that I'll make as I need them
-
--   [x] Add options for exporting as CSV and/or using scientific notation.
--   [ ] Handle other unit types, not just AC voltage and frequency
--   [ ] Proper error handling. This is a very simple program so this is not very important
--   [ ] Do data extraction with regex (for practice of course)
-
